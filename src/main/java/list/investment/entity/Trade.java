@@ -42,6 +42,11 @@ public class Trade {
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime updatedAt = LocalDateTime.now();
 
+    @OneToMany(mappedBy = "trade", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 
+    public enum TradeType {
+        buy, sell
+    }
 
 }
