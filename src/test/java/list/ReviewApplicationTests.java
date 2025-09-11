@@ -1,4 +1,4 @@
-package list.review;
+package list;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
