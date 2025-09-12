@@ -3,6 +3,10 @@ package list.investment.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @Table(name = "trades")
 @Getter
@@ -30,7 +34,7 @@ public class Trade {
     @Column(nullable = false, precision = 18, scale = 4)
     private Double quantity;
 
-    @Column(nullabe = false, precision = 18, scale = 4)
+    @Column(nullable = false, precision = 18, scale = 4)
     private Double price;
 
     @Column(nullable = false)
