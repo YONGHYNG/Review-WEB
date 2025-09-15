@@ -2,15 +2,11 @@ package list.investment.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "reviews")
 @Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Review {
 
     @Id
@@ -30,5 +26,4 @@ public class Review {
     private String content;
 
     private LocalDateTime createdAt = LocalDateTime.now();
-    private LocalDateTime updateAt = LocalDateTime.now();
 }

@@ -2,7 +2,6 @@ package list.investment.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -24,7 +23,6 @@ public class Performance {
     private LocalDate periodEnd;
 
     @Column(nullable = false, precision = 18, scale =4)
-    private Double totalInversted;
 
     @Column(nullable = false, precision = 18, scale = 4)
     private Double totalReturn;
