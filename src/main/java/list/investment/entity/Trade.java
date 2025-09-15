@@ -3,6 +3,7 @@ package list.investment.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,10 +33,10 @@ public class Trade {
     private TradeType tradeType;
 
     @Column(nullable = false, precision = 18, scale = 4)
-    private Double quantity;
+    private BigDecimal quantity;
 
     @Column(nullable = false, precision = 18, scale = 4)
-    private Double price;
+    private BigDecimal price;
 
     @Column(nullable = false)
     private LocalDate tradeDate;

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Trades from "./pages/trades";
 import Reviews from "./pages/Reviews";
 import Performance from "./pages/Performance";
+import Sidebar from "./pages/Sidebar";
 
 function App() {
     return (
@@ -17,15 +18,18 @@ function App() {
                         <NavLink to="/performance" className={({ isActive }) => `navlink${isActive ? ' active' : ''}`}>성과</NavLink>
                     </div>
                 </nav>
-
                 <main className="container">
+                    <div className="content">   
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/trades" element={<Trades />} />
                         <Route path="/reviews" element={<Reviews />} />
                         <Route path="/performance" element={<Performance />} />
                     </Routes>
+                    </div>
+                    <Sidebar />
                 </main>
+            
             </div>
         </Router>
     );

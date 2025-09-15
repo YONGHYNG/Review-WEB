@@ -1,0 +1,277 @@
+/* Home Page Styles */
+
+/* CSS Variables - Light Mode */
+:root {
+  --bg: #ffffff;
+  --panel: #f8f9fa;
+  --panel-2: #e9ecef;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+  --primary-700: #0b5ed7;
+  --accent: #198754;
+  --danger: #dc3545;
+  --border: #dee2e6;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-shell {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2% 2%;
+  background: linear-gradient(180deg, rgba(248,249,250,0.9), rgba(248,249,250,0.7));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 220%;
+  letter-spacing: 0.3px;
+  color: var(--text);
+}
+
+.navlinks {
+  display: flex;
+  gap: 1.6%;
+}
+
+.navlink {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.8% 1%;
+  border-radius: 0.8%;
+}
+
+.navlink:hover, .navlink.active {
+  color: var(--text);
+  background: var(--panel-2);
+}
+
+/* Layout */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 1.4%;
+  box-shadow: var(--shadow);
+}
+
+/* Home specific styles */
+.home-main-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.home-balance-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.home-balance-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8%;
+  margin-bottom: 1.6%;
+}
+
+.home-balance-label {
+  color: var(--muted);
+  font-size: 4%;
+}
+
+.home-balance-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.home-balance-amount {
+  margin-bottom: 0.8%;
+}
+
+.home-balance-value {
+  font-size: 9%;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.home-balance-dropdown {
+  font-size: 2.2%;
+  color: var(--muted);
+  margin-left: 0.8%;
+}
+
+.home-balance-usd {
+  color: var(--muted);
+  font-size: 4%;
+  margin-bottom: 2.4%;
+}
+
+.home-profit-section {
+  background: var(--panel-2);
+  padding: 1.6%;
+  border-radius: 1.2%;
+  margin-bottom: 2.4%;
+}
+
+.home-profit-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.home-profit-rate-label {
+  color: var(--muted);
+  font-size: 3.2%;
+}
+
+.home-profit-rate-value {
+  font-size: 5.6%;
+  font-weight: bold;
+}
+
+.home-profit-rate-value.positive {
+  color: var(--accent);
+}
+
+.home-profit-rate-value.negative {
+  color: var(--danger);
+}
+
+.home-profit-amount-label {
+  color: var(--muted);
+  font-size: 3.2%;
+}
+
+.home-profit-amount-value {
+  font-size: 4.4%;
+  font-weight: bold;
+}
+
+.home-profit-amount-value.positive {
+  color: var(--accent);
+}
+
+.home-profit-amount-value.negative {
+  color: var(--danger);
+}
+
+.home-chart-section {
+  flex: 1;
+  margin-left: 2.4%;
+  position: relative;
+  min-width: 300px;
+}
+
+.home-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6%;
+}
+
+.home-chart-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 4.4%;
+}
+
+.home-chart-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.home-chart-container {
+  height: 20vh;
+  min-height: 200px;
+  background: var(--panel-2);
+  border-radius: 1.2%;
+  padding: 1.6%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1%;
+  }
+  
+  .topnav {
+    padding: 1% 2%;
+    flex-direction: column;
+    gap: 1%;
+  }
+  
+  .navlinks {
+    gap: 2%;
+  }
+  
+  .brand {
+    font-size: 180%;
+  }
+  
+  .home-chart-section {
+    margin-left: 0;
+    margin-top: 2.4%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 98%;
+    padding: 0.5%;
+  }
+  
+  .topnav {
+    padding: 0.5% 1%;
+  }
+  
+  .navlinks {
+    flex-wrap: wrap;
+    gap: 1%;
+  }
+  
+  .navlink {
+    padding: 0.5% 0.8%;
+    font-size: 0.9em;
+  }
+  
+  .brand {
+    font-size: 150%;
+  }
+}

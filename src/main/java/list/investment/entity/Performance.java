@@ -2,6 +2,8 @@ package list.investment.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -23,11 +25,12 @@ public class Performance {
     private LocalDate periodEnd;
 
     @Column(nullable = false, precision = 18, scale =4)
+    private BigDecimal totalInvested;
 
     @Column(nullable = false, precision = 18, scale = 4)
-    private Double totalReturn;
+    private BigDecimal totalReturn;
 
-    @Column(nullable = false, precision = 6, scale = 2)
+    @Column(nullable = false)
     private Double roi; //수익률 %
 
     private LocalDateTime createdAt = LocalDateTime.now();

@@ -12,19 +12,19 @@ code {
     monospace;
 }
 
-/* Review Theme */
+/* Review Theme - Light Mode */
 :root {
-  --bg: #0f1115;
-  --panel: #151923;
-  --panel-2: #1b2130;
-  --text: #e6ebf5;
-  --muted: #9aa4b2;
-  --primary: #7c9cff;
-  --primary-700: #587dff;
-  --accent: #20c997;
-  --danger: #ff6b6b;
-  --border: #263047;
-  --shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  --bg: #ffffff;
+  --panel: #f8f9fa;
+  --panel-2: #e9ecef;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+  --primary-700: #0b5ed7;
+  --accent: #198754;
+  --danger: #dc3545;
+  --border: #dee2e6;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
 }
 
 .app-shell {
@@ -41,13 +41,14 @@ code {
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  background: linear-gradient(180deg, rgba(21,25,35,0.9), rgba(21,25,35,0.7));
+  background: linear-gradient(180deg, rgba(248,249,250,0.9), rgba(248,249,250,0.7));
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(8px);
 }
 
 .brand {
   font-weight: 800;
+  font-size: 220%;
   letter-spacing: 0.3px;
   color: var(--text);
 }

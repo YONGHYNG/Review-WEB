@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* main 태그의 클래스 */
+.container {
+  display: flex; /* 자식 요소들을 가로로 배치 */
+  height: 100vh; /* 화면 전체 높이를 차지하도록 설정 (선택 사항) */
+  overflow: hidden; /* 레이아웃이 깨지는 것을 방지 */
+}
+
+/* Routes를 감싸는 div의 클래스 */
+.content {
+  flex-grow: 1; /* 사이드바를 제외한 모든 남은 공간을 차지 */
+  overflow-y: auto; /* 내용이 길어지면 세로 스크롤바 생성 */
+  padding: 20px; /* 콘텐츠 영역의 여백 (선택 사항) */
+}
+
+/* Sidebar 컴포넌트의 최상위 요소에 적용할 클래스 (예: .sidebar) */
+.sidebar {
+  width: 280px; /* 사이드바의 고정 너비 */
+  flex-shrink: 0; /* 창 크기가 줄어들어도 사이드바 너비는 줄어들지 않음 */
+  border-left: 1px solid #e0e0e0; /* 왼쪽 경계선 (선택 사항) */
+  background-color: #fafafa; /* 배경색 (선택 사항) */
+}

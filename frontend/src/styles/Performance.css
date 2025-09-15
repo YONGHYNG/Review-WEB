@@ -1,0 +1,273 @@
+/* Performance Page Styles */
+
+/* CSS Variables - Light Mode */
+:root {
+  --bg: #ffffff;
+  --panel: #f8f9fa;
+  --panel-2: #e9ecef;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+  --primary-700: #0b5ed7;
+  --accent: #198754;
+  --danger: #dc3545;
+  --border: #dee2e6;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-shell {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2% 2%;
+  background: linear-gradient(180deg, rgba(248,249,250,0.9), rgba(248,249,250,0.7));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 220%;
+  letter-spacing: 0.3px;
+  color: var(--text);
+}
+
+.navlinks {
+  display: flex;
+  gap: 1.6%;
+}
+
+.navlink {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.8% 1%;
+  border-radius: 0.8%;
+}
+
+.navlink:hover, .navlink.active {
+  color: var(--text);
+  background: var(--panel-2);
+}
+
+/* Layout */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 1.4%;
+  box-shadow: var(--shadow);
+}
+
+/* Performance specific styles */
+.performance-header {
+  margin-bottom: 2.4%;
+}
+
+.performance-header h2 {
+  margin: 0;
+  color: var(--text);
+}
+
+.performance-header p {
+  color: var(--muted);
+  margin: 0.8% 0 0 0;
+}
+
+.performance-period-selector {
+  margin-bottom: 2.4%;
+}
+
+.performance-period-buttons {
+  display: flex;
+  gap: 0.8%;
+  flex-wrap: wrap;
+}
+
+.performance-period-btn {
+  padding: 0.8% 1.6%;
+  min-width: 60px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 1%;
+  cursor: pointer;
+}
+
+.performance-period-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.performance-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.6%;
+  margin-bottom: 2.4%;
+}
+
+.performance-metric-card {
+  padding: 2%;
+  text-align: center;
+}
+
+.performance-metric-label {
+  color: var(--muted);
+  font-size: 1.4%;
+  margin-bottom: 0.8%;
+}
+
+.performance-metric-value {
+  font-size: 2.4%;
+  font-weight: bold;
+}
+
+.performance-metric-value.positive {
+  color: var(--accent);
+}
+
+.performance-metric-value.negative {
+  color: var(--danger);
+}
+
+.performance-metric-value.neutral {
+  color: var(--text);
+}
+
+.performance-metric-subtext {
+  color: var(--muted);
+  font-size: 1.2%;
+}
+
+.performance-chart-section {
+  padding: 2.4%;
+}
+
+.performance-chart-title {
+  margin: 0 0 2% 0;
+  color: var(--text);
+}
+
+.performance-chart-container {
+  height: 30vh;
+  min-height: 300px;
+  background: var(--panel-2);
+  border-radius: 1.2%;
+  padding: 2%;
+  position: relative;
+  overflow: hidden;
+}
+
+.performance-chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2.4%;
+  margin-top: 1.6%;
+  flex-wrap: wrap;
+}
+
+.performance-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8%;
+}
+
+.performance-legend-color {
+  width: 1.2%;
+  height: 1.2%;
+  border-radius: 0.2%;
+}
+
+.performance-legend-color.profit {
+  background: var(--accent);
+}
+
+.performance-legend-color.loss {
+  background: var(--danger);
+}
+
+.performance-legend-text {
+  color: var(--muted);
+  font-size: 1.2%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1%;
+  }
+  
+  .topnav {
+    padding: 1% 2%;
+    flex-direction: column;
+    gap: 1%;
+  }
+  
+  .navlinks {
+    gap: 2%;
+  }
+  
+  .brand {
+    font-size: 180%;
+  }
+  
+  .performance-metrics-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 98%;
+    padding: 0.5%;
+  }
+  
+  .topnav {
+    padding: 0.5% 1%;
+  }
+  
+  .navlinks {
+    flex-wrap: wrap;
+    gap: 1%;
+  }
+  
+  .navlink {
+    padding: 0.5% 0.8%;
+    font-size: 0.9em;
+  }
+  
+  .brand {
+    font-size: 150%;
+  }
+  
+  .performance-period-btn {
+    padding: 0.8% 1.2%;
+    font-size: 0.9em;
+  }
+}

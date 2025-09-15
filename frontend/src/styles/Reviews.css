@@ -1,0 +1,331 @@
+/* Reviews Page Styles */
+
+/* CSS Variables - Light Mode */
+:root {
+  --bg: #ffffff;
+  --panel: #f8f9fa;
+  --panel-2: #e9ecef;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+  --primary-700: #0b5ed7;
+  --accent: #198754;
+  --danger: #dc3545;
+  --border: #dee2e6;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-shell {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2% 2%;
+  background: linear-gradient(180deg, rgba(248,249,250,0.9), rgba(248,249,250,0.7));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 220%;
+  letter-spacing: 0.3px;
+  color: var(--text);
+}
+
+.navlinks {
+  display: flex;
+  gap: 1.6%;
+}
+
+.navlink {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.8% 1%;
+  border-radius: 0.8%;
+}
+
+.navlink:hover, .navlink.active {
+  color: var(--text);
+  background: var(--panel-2);
+}
+
+/* Layout */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 1.4%;
+  box-shadow: var(--shadow);
+}
+
+/* Reviews specific styles */
+.reviews-board {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 2%;
+}
+
+.reviews-main {
+  display: grid;
+  gap: 1.6%;
+}
+
+.reviews-composer {
+  padding: 1.6%;
+}
+
+.reviews-composer h3 {
+  margin: 0 0 1% 0;
+}
+
+.reviews-form {
+  display: grid;
+  gap: 1%;
+}
+
+.reviews-field {
+  display: grid;
+  gap: 0.6%;
+}
+
+.reviews-field label {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.reviews-input, .reviews-textarea, .reviews-select {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 1%;
+  padding: 1% 1.2%;
+}
+
+.reviews-textarea {
+  min-height: 10.4%;
+  resize: vertical;
+}
+
+.reviews-actions {
+  display: flex;
+  gap: 1%;
+  align-items: center;
+}
+
+.reviews-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 1%;
+  padding: 1% 1.4%;
+  cursor: pointer;
+}
+
+.reviews-btn:hover {
+  background: var(--primary-700);
+}
+
+.reviews-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.reviews-btn.danger {
+  background: var(--danger);
+}
+
+.reviews-list {
+  display: grid;
+  gap: 1.6%;
+}
+
+.reviews-post {
+  padding: 1.4% 1.6%;
+}
+
+.reviews-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6%;
+}
+
+.reviews-post-title {
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.reviews-post-mood {
+  padding: 0.2% 0.6%;
+  border-radius: 0.4%;
+  font-size: 0.8%;
+  font-weight: 500;
+  margin-left: 1%;
+}
+
+.reviews-post-mood.reflect {
+  background: rgba(13, 110, 253, 0.1);
+  color: var(--primary);
+}
+
+.reviews-post-mood.discipline {
+  background: rgba(25, 135, 84, 0.1);
+  color: var(--accent);
+}
+
+.reviews-post-mood.neutral {
+  background: rgba(108, 117, 125, 0.1);
+  color: var(--muted);
+}
+
+.reviews-post-mood.regret {
+  background: rgba(220, 53, 69, 0.1);
+  color: var(--danger);
+}
+
+.reviews-post-meta {
+  color: var(--muted);
+  font-size: 1.2%;
+  margin-bottom: 0.8%;
+}
+
+.reviews-post-body {
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 0.8%;
+}
+
+.reviews-post-actions {
+  display: flex;
+  gap: 0.8%;
+}
+
+.reviews-delete-btn {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 0.9%;
+  padding: 0.2% 0.4%;
+}
+
+.reviews-delete-btn:hover {
+  background: rgba(220, 53, 69, 0.1);
+  border-radius: 0.2%;
+}
+
+.reviews-side {
+  display: grid;
+  gap: 1.6%;
+  height: fit-content;
+}
+
+.reviews-side-card {
+  padding: 1.4% 1.6%;
+}
+
+.reviews-side-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1%;
+}
+
+.reviews-side-list a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.reviews-side-list a:hover {
+  text-decoration: underline;
+}
+
+.reviews-char-count {
+  color: var(--muted);
+  font-size: 0.9%;
+  text-align: right;
+}
+
+.reviews-char-count.warning {
+  color: var(--danger);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1%;
+  }
+  
+  .topnav {
+    padding: 1% 2%;
+    flex-direction: column;
+    gap: 1%;
+  }
+  
+  .navlinks {
+    gap: 2%;
+  }
+  
+  .brand {
+    font-size: 180%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 98%;
+    padding: 0.5%;
+  }
+  
+  .topnav {
+    padding: 0.5% 1%;
+  }
+  
+  .navlinks {
+    flex-wrap: wrap;
+    gap: 1%;
+  }
+  
+  .navlink {
+    padding: 0.5% 0.8%;
+    font-size: 0.9em;
+  }
+  
+  .brand {
+    font-size: 150%;
+  }
+  
+  .reviews-btn {
+    padding: 0.8% 1.2%;
+    font-size: 0.9em;
+  }
+}

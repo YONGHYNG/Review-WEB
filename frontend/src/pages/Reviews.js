@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from "react";
+import '../styles/Reviews.css';
+
 
 function Reviews() {
     const [title, setTitle] = useState("");
@@ -15,9 +17,7 @@ function Reviews() {
             return [];
         }
     });
-
     const remaining = useMemo(() => 500 - body.length, [body]);
-
     const submit = (e) => {
         e.preventDefault();
         if (!title.trim() || !body.trim()) return;
@@ -28,67 +28,66 @@ function Reviews() {
         setMood("neutral");
         setBody("");
     };
-
     const remove = (id) => {
         const next = posts.filter(p => p.id !== id);
         setPosts(next);
         localStorage.setItem("review-posts", JSON.stringify(next));
     };
-
     return (
-        <div className="board">
-            <section className="board-main">
-                <div className="panel composer">
+        <div className="reviews-board">
+            <section className="reviews-main">
+                <div className="panel reviews-composer">
                     <h3>투자 복기 작성</h3>
-                    <form onSubmit={submit}>
-                        <div className="field">
+                    <form className="reviews-form" onSubmit={submit}>
+                        <div className="reviews-field">
                             <label>제목</label>
-                            <input className="input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="예: 목표가 근처에서의 심리" />
+                            <input className="reviews-input" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="예: 목표가 근처에서의 심리" />
                         </div>
-                        <div className="field">
+                        <div className="reviews-field">
                             <label>기분/태도</label>
-                            <select className="select" value={mood} onChange={(e) => setMood(e.target.value)}>
+                            <select className="reviews-select" value={mood} onChange={(e) => setMood(e.target.value)}>
                                 <option value="neutral">중립</option>
                                 <option value="reflect">반성</option>
                                 <option value="discipline">규율</option>
                                 <option value="happy">만족</option>
                             </select>
                         </div>
-                        <div className="field">
+                        <div className="reviews-field">
                             <label>내용 <span className="kbd">{remaining}</span></label>
-                            <textarea maxLength={500} className="textarea" value={body} onChange={(e) => setBody(e.target.value)} placeholder="오늘의 거래에서 배운 점, 실수, 다음 액션을 적어보세요." />
+                            <textarea maxLength={500} className="reviews-textarea" value={body} onChange={(e) => setBody(e.target.value)} placeholder="오늘의 거래에서 배운 점, 실수, 다음 액션을 적어보세요." />
                         </div>
-                        <div className="actions">
-                            <button className="btn" type="submit">등록</button>
-                            <span style={{ color: "var(--muted)" }}>Shift + Enter 줄바꿈</span>
+                        <div className="reviews-actions">
+                            <button className="reviews-btn" type="submit">등록</button>
+                            <span className="reviews-char-count">Shift + Enter 줄바꿈</span>
                         </div>
                     </form>
                 </div>
-
                 {posts.map((p) => (
-                    <article key={p.id} className="panel post">
-                        <div className="post-title">{p.title}</div>
-                        <div className="post-meta">{new Date(p.createdAt).toLocaleString()} · {p.mood}</div>
-                        <div className="post-body">{p.body}</div>
-                        <div className="actions" style={{ marginTop: 10 }}>
-                            <button className="btn ghost" onClick={() => remove(p.id)}>삭제</button>
+                    <article key={p.id} className="panel reviews-post">
+                        <div className="reviews-post-header">
+                            <div className="reviews-post-title">{p.title}</div>
+                            <span className={`reviews-post-mood ${p.mood}`}>{p.mood}</span>
+                        </div>
+                        <div className="reviews-post-meta">{new Date(p.createdAt).toLocaleString()}</div>
+                        <div className="reviews-post-body">{p.body}</div>
+                        <div className="reviews-post-actions">
+                            <button className="reviews-delete-btn" onClick={() => remove(p.id)}>삭제</button>
                         </div>
                     </article>
                 ))}
             </section>
-
-            <aside className="board-side">
-                <div className="panel card">
-                    <h3 style={{ marginTop: 0 }}>리뷰 가이드</h3>
-                    <ul className="list">
+            <aside className="reviews-side">
+                <div className="panel reviews-side-card">
+                    <h3>리뷰 가이드</h3>
+                    <ul className="reviews-side-list">
                         <li>사전 계획 vs 실제 실행 비교</li>
                         <li>감정(두려움/탐욕)이 개입된 순간</li>
                         <li>다음 거래에서 바꿀 1가지</li>
                     </ul>
                 </div>
-                <div className="panel card">
-                    <h3 style={{ marginTop: 0 }}>빠른 링크</h3>
-                    <ul className="list">
+                <div className="panel reviews-side-card">
+                    <h3>빠른 링크</h3>
+                    <ul className="reviews-side-list">
                         <li><a href="/trades">거래 기록</a></li>
                         <li><a href="/performance">성과 지표</a></li>
                     </ul>
