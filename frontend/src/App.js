@@ -4,6 +4,7 @@ import Trades from "./pages/trades";
 import Reviews from "./pages/Reviews";
 import Performance from "./pages/Performance";
 import Sidebar from "./pages/Sidebar";
+import "./styles/App.css"
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     </div>
                 </nav>
                 <main className="container">
+                    <Sidebar />
                     <div className="content">   
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -27,7 +29,6 @@ function App() {
                         <Route path="/performance" element={<Performance />} />
                     </Routes>
                     </div>
-                    <Sidebar />
                 </main>
             
             </div>

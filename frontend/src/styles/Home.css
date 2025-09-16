@@ -1,277 +1,234 @@
-/* Home Page Styles */
-
-/* CSS Variables - Light Mode */
+/* 기본 변수 및 패널 스타일 */
 :root {
-  --bg: #ffffff;
-  --panel: #f8f9fa;
-  --panel-2: #e9ecef;
-  --text: #212529;
-  --muted: #6c757d;
-  --primary: #0d6efd;
-  --primary-700: #0b5ed7;
-  --accent: #198754;
-  --danger: #dc3545;
-  --border: #dee2e6;
-  --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Base Styles */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.app-shell {
-  background: var(--bg);
-  min-height: 100vh;
-  color: var(--text);
-}
-
-/* Navigation */
-.topnav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.2% 2%;
-  background: linear-gradient(180deg, rgba(248,249,250,0.9), rgba(248,249,250,0.7));
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(8px);
-}
-
-.brand {
-  font-weight: 800;
-  font-size: 220%;
-  letter-spacing: 0.3px;
-  color: var(--text);
-}
-
-.navlinks {
-  display: flex;
-  gap: 1.6%;
-}
-
-.navlink {
-  color: var(--muted);
-  text-decoration: none;
-  padding: 0.8% 1%;
-  border-radius: 0.8%;
-}
-
-.navlink:hover, .navlink.active {
-  color: var(--text);
-  background: var(--panel-2);
-}
-
-/* Layout */
-.container {
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 2%;
+  --primary: #4a90e2;
+  --positive: #28a745;
+  --negative: #dc3545;
 }
 
 .panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 1.4%;
-  box-shadow: var(--shadow);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #e9ecef;
 }
 
-/* Home specific styles */
-.home-main-layout {
+/* --- 새로운 상하 레이아웃 --- */
+.home-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column; /* 자식 요소들을 세로로 배치 */
+  gap: 20px; /* 섹션 사이의 간격 */
+  height: 100%;
 }
 
-.home-balance-section {
-  flex: 1;
-  min-width: 300px;
+/* --- 1. 자산 섹션 --- */
+.asset-section {
+  flex-shrink: 0; /* 높이가 줄어들지 않도록 고정 */
+  padding: 20px;
 }
 
-.home-balance-header {
+/* 자산 정보 관련 스타일 (기존과 거의 동일) */
+.home-balance-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.home-balance-label { font-size: 16px; color: #666; font-weight: 600; }
+.home-balance-toggle { background: none; border: none; font-size: 20px; cursor: pointer; }
+.home-balance-amount { margin-bottom: 5px; }
+.home-balance-value { font-size: 28px; font-weight: bold; color: #333; }
+.home-balance-usd { color: #888; margin-bottom: 20px; }
+.home-profit-section { padding-top: 20px; border-top: 1px solid #eee; }
+.home-profit-layout { display: flex; justify-content: space-between; }
+.home-profit-rate-label, .home-profit-amount-label { font-size: 14px; color: #666; margin-bottom: 5px; }
+.home-profit-rate-value, .home-profit-amount-value { font-size: 18px; font-weight: 500; }
+.positive { color: var(--positive); }
+.negative { color: var(--negative); }
+
+/* --- 2. 게시판 섹션 --- */
+.board-section {
+  flex-grow: 1; /* 남은 공간을 모두 차지 */
+  padding: 20px;
   display: flex;
+  flex-direction: column; /* 내부 요소들을 세로로 배치 */
+  overflow: hidden; /* 내부 요소가 넘치지 않도록 */
+}
+
+.board-title {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+}
+
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.board-table th, .board-table td {
+  padding: 12px 8px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.board-table thead th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+.board-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.board-table td:nth-child(1) { width: 10%; text-align: center; } /* 번호 */
+.board-table td:nth-child(2) { width: 50%; } /* 제목 */
+.board-table td:nth-child(3) { width: 20%; text-align: center; } /* 작성자 */
+.board-table td:nth-child(4) { width: 20%; text-align: center; } /* 작성일 */
+
+
+/* --- 3. 페이지네이션 --- */
+.pagination {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.8%;
-  margin-bottom: 1.6%;
+  padding: 20px 0 0 0;
+  margin-top: auto; /* 테이블 아래 공간을 밀어내고 맨 아래에 위치 */
 }
 
-.home-balance-label {
-  color: var(--muted);
-  font-size: 4%;
-}
-
-.home-balance-toggle {
-  background: none;
-  border: none;
+.pagination button {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  margin: 0 4px;
   cursor: pointer;
-  color: var(--muted);
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.home-balance-amount {
-  margin-bottom: 0.8%;
+.pagination button:hover {
+  background-color: #f0f0f0;
 }
 
-.home-balance-value {
-  font-size: 9%;
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination button.active {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
   font-weight: bold;
-  color: var(--text);
 }
 
-.home-balance-dropdown {
-  font-size: 2.2%;
-  color: var(--muted);
-  margin-left: 0.8%;
+/* ===== 내 자산 차트 영역 ===== */
+.asset-chart-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-.home-balance-usd {
-  color: var(--muted);
-  font-size: 4%;
-  margin-bottom: 2.4%;
-}
-
-.home-profit-section {
-  background: var(--panel-2);
-  padding: 1.6%;
-  border-radius: 1.2%;
-  margin-bottom: 2.4%;
-}
-
-.home-profit-layout {
+.asset-chart-section .chart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  margin-bottom: 12px;
 }
 
-.home-profit-rate-label {
-  color: var(--muted);
-  font-size: 3.2%;
-}
-
-.home-profit-rate-value {
-  font-size: 5.6%;
+.asset-chart-section .chart-header span {
+  font-size: 16px;
   font-weight: bold;
+  color: #333;
 }
 
-.home-profit-rate-value.positive {
-  color: var(--accent);
-}
-
-.home-profit-rate-value.negative {
-  color: var(--danger);
-}
-
-.home-profit-amount-label {
-  color: var(--muted);
-  font-size: 3.2%;
-}
-
-.home-profit-amount-value {
-  font-size: 4.4%;
-  font-weight: bold;
-}
-
-.home-profit-amount-value.positive {
-  color: var(--accent);
-}
-
-.home-profit-amount-value.negative {
-  color: var(--danger);
-}
-
-.home-chart-section {
-  flex: 1;
-  margin-left: 2.4%;
-  position: relative;
-  min-width: 300px;
-}
-
-.home-chart-header {
+/* ===== 기간 선택 버튼 ===== */
+.chart-period-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.6%;
+  gap: 8px;
 }
 
-.home-chart-title {
-  margin: 0;
-  color: var(--text);
-  font-size: 4.4%;
-}
-
-.home-chart-toggle {
-  background: none;
-  border: none;
+.chart-period-buttons button {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+  font-size: 13px;
+  color: #333;
   cursor: pointer;
-  color: var(--muted);
+  transition: all 0.2s ease;
 }
 
-.home-chart-container {
-  height: 20vh;
-  min-height: 200px;
-  background: var(--panel-2);
-  border-radius: 1.2%;
-  padding: 1.6%;
-  position: relative;
-  overflow: hidden;
+.chart-period-buttons button:hover {
+  background: #f0f0f0;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    max-width: 95%;
-    padding: 1%;
-  }
-  
-  .topnav {
-    padding: 1% 2%;
-    flex-direction: column;
-    gap: 1%;
-  }
-  
-  .navlinks {
-    gap: 2%;
-  }
-  
-  .brand {
-    font-size: 180%;
-  }
-  
-  .home-chart-section {
-    margin-left: 0;
-    margin-top: 2.4%;
-  }
+.chart-period-buttons button.active {
+  background: #4F46E5; /* 보라색 강조 */
+  color: white;
+  border-color: #4F46E5;
+  font-weight: bold;
 }
 
-@media (max-width: 480px) {
-  .container {
-    max-width: 98%;
-    padding: 0.5%;
-  }
-  
-  .topnav {
-    padding: 0.5% 1%;
-  }
-  
-  .navlinks {
-    flex-wrap: wrap;
-    gap: 1%;
-  }
-  
-  .navlink {
-    padding: 0.5% 0.8%;
-    font-size: 0.9em;
-  }
-  
-  .brand {
-    font-size: 150%;
-  }
+/* ===== 차트 내부 스타일 ===== */
+.recharts-cartesian-grid line {
+  stroke: #e0e0e0;
+}
+
+.recharts-tooltip-wrapper {
+  font-size: 13px;
+}
+
+/* ===== 게시판 ===== */
+.board-section h2.board-title {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.board-table th, .board-table td {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: center;
+}
+
+.board-table th {
+  background: #f9f9f9;
+  font-weight: bold;
+}
+
+.board-table tr:hover {
+  background: #f5f5f5;
+}
+
+/* ===== 페이지네이션 ===== */
+.pagination {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination button:hover {
+  background: #f0f0f0;
+}
+
+.pagination button.active {
+  background: #4F46E5;
+  color: white;
+  border-color: #4F46E5;
+  font-weight: bold;
 }
