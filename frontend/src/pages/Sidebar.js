@@ -14,7 +14,7 @@ function Sidebar() {
                     <NavLink to="/" end>홈</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/board">자유게시판</NavLink>
+                    <NavLink to="/item">관심종목</NavLink>
                 </li>
                 <li>
                     <NavLink to="/market">장터</NavLink>

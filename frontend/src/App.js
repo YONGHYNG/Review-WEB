@@ -4,6 +4,7 @@ import Trades from "./pages/trades";
 import Reviews from "./pages/Reviews";
 import Performance from "./pages/Performance";
 import Sidebar from "./pages/Sidebar";
+import Item from "./pages/Item";
 import "./styles/App.css"
 
 function App() {
@@ -21,12 +22,13 @@ function App() {
                 </nav>
                 <main className="container">
                     <Sidebar />
-                    <div className="content">   
+                    <div className="content">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/trades" element={<Trades />} />
                         <Route path="/reviews" element={<Reviews />} />
                         <Route path="/performance" element={<Performance />} />
+                        <Route path={"/item"} element={<Item />} />
                     </Routes>
                     </div>
                 </main>
