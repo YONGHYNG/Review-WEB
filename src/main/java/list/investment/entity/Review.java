@@ -3,7 +3,6 @@ package list.investment.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "reviews")
 @Getter @Setter

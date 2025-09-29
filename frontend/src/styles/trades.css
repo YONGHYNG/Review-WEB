@@ -319,6 +319,172 @@ body {
   margin-top: 0.4%;
 }
 
+/* 대시보드 레이아웃 */
+.trades-dashboard-layout {
+  display: flex;
+  min-height: 80vh;
+  background: #fafbfc;
+}
+.trades-sidebar {
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #e5e7eb;
+  padding: 32px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.trades-sidebar-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  padding: 0 24px 12px 24px;
+}
+.trades-sidebar-menu {
+  list-style: none;
+  padding: 0 0 0 24px;
+  margin: 0;
+}
+.trades-sidebar-menu li {
+  font-size: 16px;
+  color: #444;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.trades-sidebar-menu li.active {
+  color: #1976d2;
+  font-weight: bold;
+}
+.trades-sidebar-section {
+  font-size: 15px;
+  color: #888;
+  padding: 0 24px;
+  margin-top: 24px;
+}
+
+.trades-main-content {
+  flex: 1 1 0;
+  padding: 32px 32px 0 32px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* 상단 통계 */
+.trades-stats-bar {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 24px;
+}
+.trades-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+.trades-stat .stat-num {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+}
+.trades-stat .stat-label {
+  font-size: 14px;
+  color: #888;
+  margin-top: 2px;
+}
+.trades-stat.done .stat-num {
+  color: #1976d2;
+}
+.trades-stat.fail .stat-num {
+  color: #dc3545;
+}
+
+/* 상단 툴바 */
+.trades-toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.trades-search {
+  flex: 1 1 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 15px;
+  background: #fff;
+}
+.trades-period-btn, .trades-download-btn {
+  background: #f5f6fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.trades-period-btn:hover, .trades-download-btn:hover {
+  background: #e3e8f0;
+}
+
+/* 테이블 */
+.trades-table-wrap {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border: 1px solid #e5e7eb;
+  overflow-x: auto;
+}
+.trades-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.trades-table th, .trades-table td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+  color: #222;
+}
+.trades-table th {
+  background: #f8fafd;
+  font-weight: 600;
+  color: #555;
+}
+.trades-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 페이지네이션 */
+.trades-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  margin: 18px 0 32px 0;
+}
+.trades-pagination button {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.trades-pagination button.active {
+  background: #1976d2;
+  color: #fff;
+  border-color: #1976d2;
+  font-weight: bold;
+}
+.trades-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
@@ -368,5 +534,45 @@ body {
   .trades-btn {
     padding: 0.8% 1.2%;
     font-size: 0.9em;
+  }
+}
+
+@media (max-width: 900px) {
+  .trades-dashboard-layout {
+    flex-direction: column;
+  }
+  .trades-sidebar {
+    width: 100%;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .trades-sidebar-title, .trades-sidebar-section {
+    padding: 12px 16px;
+  }
+  .trades-main-content {
+    padding: 18px 8px 0 8px;
+  }
+}
+@media (max-width: 600px) {
+  .trades-stats-bar {
+    gap: 12px;
+  }
+  .trades-table th, .trades-table td {
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+  .trades-toolbar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+  .trades-pagination button {
+    font-size: 12px;
+    padding: 4px 8px;
   }
 }

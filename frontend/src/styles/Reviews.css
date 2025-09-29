@@ -103,61 +103,99 @@ body {
   margin: 0 0 1% 0;
 }
 
+/* ===== 투자 리뷰 테이블 ===== */
+.reviews-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: var(--panel);
+  font-size: 15px;
+}
+.reviews-table th, .reviews-table td {
+  border: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: center;
+  word-break: break-all;
+}
+.reviews-table th {
+  background: #f4f6fa;
+  color: #333;
+  font-weight: 600;
+}
+.reviews-table tr:hover {
+  background: #f7faff;
+}
+
+/* ===== 리뷰 폼 ===== */
 .reviews-form {
-  display: grid;
-  gap: 1%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-
 .reviews-field {
-  display: grid;
-  gap: 0.6%;
+  flex: 1 1 180px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
-
-.reviews-field label {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.reviews-input, .reviews-textarea, .reviews-select {
+.reviews-input, .reviews-textarea {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 15px;
   background: var(--panel-2);
   color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 1%;
-  padding: 1% 1.2%;
 }
-
 .reviews-textarea {
-  min-height: 10.4%;
+  min-height: 60px;
   resize: vertical;
 }
 
 .reviews-actions {
   display: flex;
-  gap: 1%;
+  gap: 10px;
   align-items: center;
+  margin-top: 8px;
 }
-
 .reviews-btn {
   background: var(--primary);
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 1%;
-  padding: 1% 1.4%;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
   cursor: pointer;
+  transition: background 0.2s;
 }
-
 .reviews-btn:hover {
   background: var(--primary-700);
 }
-
-.reviews-btn.ghost {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text);
+.reviews-edit-btn {
+  background: #fffbe6;
+  color: #bfa100;
+  border: 1px solid #ffe58f;
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin-right: 4px;
+  cursor: pointer;
+  font-size: 14px;
 }
-
-.reviews-btn.danger {
-  background: var(--danger);
+.reviews-edit-btn:hover {
+  background: #fff1b8;
+}
+.reviews-delete-btn {
+  background: #fff1f0;
+  color: #cf1322;
+  border: 1px solid #ffa39e;
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.reviews-delete-btn:hover {
+  background: #ffa39e;
+  color: #fff;
 }
 
 .reviews-list {
@@ -225,20 +263,6 @@ body {
 .reviews-post-actions {
   display: flex;
   gap: 0.8%;
-}
-
-.reviews-delete-btn {
-  background: none;
-  border: none;
-  color: var(--danger);
-  cursor: pointer;
-  font-size: 0.9%;
-  padding: 0.2% 0.4%;
-}
-
-.reviews-delete-btn:hover {
-  background: rgba(220, 53, 69, 0.1);
-  border-radius: 0.2%;
 }
 
 .reviews-side {
@@ -327,5 +351,25 @@ body {
   .reviews-btn {
     padding: 0.8% 1.2%;
     font-size: 0.9em;
+  }
+}
+
+@media (max-width: 900px) {
+  .reviews-board {
+    grid-template-columns: 1fr;
+  }
+  .reviews-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .reviews-table th, .reviews-table td {
+    font-size: 12px;
+    padding: 6px 4px;
+  }
+  .reviews-btn, .reviews-edit-btn, .reviews-delete-btn {
+    font-size: 12px;
+    padding: 6px 10px;
   }
 }

@@ -1,134 +1,106 @@
-import { useEffect, useMemo, useState } from "react";
+import React, { useState, useMemo } from "react";
 import '../styles/trades.css';
 
+const mockCompanies = [
+
+];
 
 function Trades() {
-    const [symbol, setSymbol] = useState("");
-    const [quantity, setQuantity] = useState("");
-    const [price, setPrice] = useState("");
-    const [tradeType, setTradeType] = useState("buy");
-    const [trades, setTrades] = useState(() => {
-        try {
-            const raw = localStorage.getItem("trades");
-            return raw ? JSON.parse(raw) : [];
-        } catch {
-            return [];
-        }
-    });
-    const [error, setError] = useState("");
-    useEffect(() => {
-        localStorage.setItem("trades", JSON.stringify(trades));
-    }, [trades]);
-    const totalCost = useMemo(() => {
-        const q = Number(quantity || 0);
-        const p = Number(price || 0);
-        return q * p;
-    }, [quantity, price]);
-    const resetForm = () => {
-        setSymbol("");
-        setQuantity("");
-        setPrice("");
-        setTradeType("buy");
-        setError("");
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!symbol.trim()) return setError("종목코드를 입력하세요.");
-        const q = Number(quantity);
-        const p = Number(price);
-        if (!q || q <= 0) return setError("수량은 1 이상이어야 합니다.");
-        if (!p || p <= 0) return setError("가격은 0보다 커야 합니다.");
-        const newTrade = {
-            id: Date.now(),
-            symbol: symbol.trim().toUpperCase(),
-            quantity: q,
-            price: p,
-            tradeType,
-            createdAt: new Date().toISOString()
-        };
-        setTrades([newTrade, ...trades]);
-        resetForm();
-    };
-    const handleDelete = (id) => {
-        setTrades(trades.filter((t) => t.id !== id));
-    };
-    return (
-        <div className="trades-board">
-            <section className="trades-main">
-                <div className="panel trades-composer">
-                    <h2>거래 기록 추가</h2>
-                    <form className="trades-form" onSubmit={handleSubmit}>
-                        <div className="trades-field">
-                            <label>종목코드</label>
-                            <input
-                                className="trades-input"
-                                type="text"
-                                placeholder="예: AAPL"
-                                value={symbol}
-                                onChange={(e) => setSymbol(e.target.value)}
-                            />
-                        </div>
-                        <div className="trades-field">
-                            <label>수량</label>
-                            <input
-                                className="trades-input"
-                                type="number"
-                                inputMode="numeric"
-                                min="1"
-                                placeholder="예: 10"
-                                value={quantity}
-                                onChange={(e) => setQuantity(e.target.value)}
-                            />
-                        </div>
-                        <div className="trades-field">
-                            <label>가격</label>
-                            <input
-                                className="trades-input"
-                                type="number"
-                                inputMode="decimal"
-                                step="0.01"
-                                placeholder="예: 150.25"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                            />
-                        </div>
-                        <div className="trades-field">
-                            <label>유형</label>
-                            <select className="trades-select" value={tradeType} onChange={(e) => setTradeType(e.target.value)}>
-                                <option value="buy">매수</option>
-                                <option value="sell">매도</option>
-                            </select>
-                        </div>
-                        {error && <div className="trades-error">{error}</div>}
-                        <div className="trades-actions">
-                            <button className="trades-btn" type="submit">저장</button>
-                            <span className="trades-cost-preview">예상 금액: {Number.isFinite(totalCost) ? totalCost.toLocaleString() : 0}</span>
-                        </div>
-                    </form>
-                    <h3>최근 거래</h3>
-                    {trades.length === 0 ? (
-                        <div className="trades-error">저장된 거래가 없습니다.</div>
-                    ) : (
-                        <ul className="trades-list">
-                            {trades.map((t) => (
-                                <li key={t.id} className="trades-post">
-                                    <div className="trades-post-header">
-                                        <div className="trades-post-title">
-                                            {t.symbol} · <span className={`trades-post-type ${t.tradeType}`}>{t.tradeType === "buy" ? "매수" : "매도"}</span>
-                                        </div>
-                                    </div>
-                                    <div className="trades-post-meta">{t.quantity}주 @ {t.price.toLocaleString()} · {new Date(t.createdAt).toLocaleString()}</div>
-                                    <div className="trades-post-actions">
-                                        <button className="trades-delete-btn" onClick={() => handleDelete(t.id)}>삭제</button>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-            </section>
+  // 거래 데이터 (실제는 API 연동, 여기선 mock)
+  const [trades, setTrades] = useState(() => {
+    try {
+      const raw = localStorage.getItem("trades");
+      return raw ? JSON.parse(raw) : Array.from({ length: 12 }, (_, i) => ({
+        id: i + 1,
+        company: mockCompanies[i % mockCompanies.length].name,
+        position: [
+          '웹 개발자(3년차 이상)',
+          '웹 풀스택 개발자 (2년차)',
+          'React 웹 프론트엔드',
+          '비전Dev 백엔드 개발자',
+          '백엔드 개발자',
+          'JAVA 백엔드 개발자',
+          '소프트웨어 개발',
+          '플랫폼개발(경영혁신)',
+          '백엔드 개발자',
+          'Full-Stack 개발자',
+        ][i % 10],
+        createdAt: '2025. 9. 24',
+        status: ['접수', '열람'][i % 2],
+        recommend: '추천인 없음',
+      }));
+    } catch {
+      return [];
+    }
+  });
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
+  const perPage = 10;
+  const filtered = useMemo(() =>
+    trades.filter(t =>
+      t.company.includes(search) || t.position.includes(search)
+    ), [trades, search]);
+  const paged = filtered.slice((page - 1) * perPage, page * perPage);
+  const totalPages = Math.ceil(filtered.length / perPage);
+
+  // 통계 mock
+  const stats = {
+    total: trades.length,
+    done: 37,
+    pass: 1,
+    final: 0,
+    fail: 127,
+  };
+
+  return (
+    <div className="trades-dashboard-layout">
+      {/* 메인 */}
+      <main className="trades-main-content">
+        {/* 상단 통계 */}
+        <div className="trades-stats-bar">
+          <div className="trades-stat"><div className="stat-num">{stats.total}</div><div className="stat-label">전체</div></div>
+          <div className="trades-stat done"><div className="stat-num">{stats.done}</div><div className="stat-label">상승 종목</div></div>
+          <div className="trades-stat"><div className="stat-num">{stats.pass}</div><div className="stat-label">하락 종목</div></div>
+          <div className="trades-stat"><div className="stat-num">{stats.final}</div><div className="stat-label">등록 후 수익율</div></div>
+          <div className="trades-stat fail"><div className="stat-num">{stats.fail}</div><div className="stat-label">개선점</div></div>
         </div>
-    );
+        {/* 테이블 */}
+        <div className="trades-table-wrap">
+          <table className="trades-table">
+            <thead>
+              <tr>
+                <th>종목</th>
+                <th>진입 가격</th>
+                <th>매수 금액</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {paged.length === 0 && <tr><td colSpan={5} style={{textAlign:'center'}}>데이터 없음</td></tr>}
+              {paged.map((t, i) => (
+                <tr key={t.id}>
+                  <td>{t.company}</td>
+                  <td>{t.position}</td>
+                  <td>{t.createdAt}</td>
+                  <td>{t.status}</td>
+                  <td>{t.recommend}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {/* 페이지네이션 */}
+        <div className="trades-pagination">
+          <button onClick={()=>setPage(p=>Math.max(1,p-1))} disabled={page===1}>&lt;</button>
+          {Array.from({length: totalPages}, (_,i)=>i+1).map(p=>(
+            <button key={p} className={p===page?"active":''} onClick={()=>setPage(p)}>{p}</button>
+          ))}
+          <button onClick={()=>setPage(p=>Math.min(totalPages,p+1))} disabled={page===totalPages}>&gt;</button>
+        </div>
+      </main>
+    </div>
+  );
 }
 
 export default Trades;
