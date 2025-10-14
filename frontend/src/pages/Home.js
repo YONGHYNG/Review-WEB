@@ -15,7 +15,7 @@ function Home() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/cards');
+        const res = await fetch('http://localhost:8080/api/cards');
         if (!res.ok) throw new Error('Failed to fetch data');
         const data = await res.json();
         setCards(data);
@@ -79,7 +79,35 @@ function Home() {
                 {card.result === 'WIN' ? '승' : '패'}
               </span>
             </div>
+
             <div className="trade-card-date">{card.tradeDate}</div>
+
+            {/* 추가 데이터 출력: 투자금, 진입가, 손익(있을 경우), 리뷰(간략) */}
+            <div className="trade-card-body">
+              <div className="trade-row">
+                <strong>투자금:</strong>
+                <span>{card.investAmount != null ? card.investAmount.toLocaleString() + '원' : '-'}</span>
+              </div>
+              <div className="trade-row">
+                <strong>진입가:</strong>
+                <span>{card.entryPrice != null ? card.entryPrice.toLocaleString() : '-'}</span>
+              </div>
+              <div className="trade-row">
+                <strong>손익:</strong>
+                <span>
+                  {card.profitAmount != null
+                    ? card.profitAmount.toLocaleString() + '원'
+                    : card.lossAmount != null
+                    ? '-' + card.lossAmount.toLocaleString() + '원'
+                    : '-'}
+                </span>
+              </div>
+              <div className="trade-row review-row">
+                <strong>리뷰:</strong>
+                <span>{card.review ? (card.review.length > 60 ? card.review.slice(0, 60) + '...' : card.review) : '작성 없음'}</span>
+              </div>
+            </div>
+
             <div className={`corner-square ${card.result === 'WIN' ? 'win' : 'lose'}`}></div>
           </div>
         ))}
