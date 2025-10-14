@@ -1,0 +1,375 @@
+/* Reviews Page Styles */
+
+/* CSS Variables - Light Mode */
+:root {
+  --bg: #ffffff;
+  --panel: #f8f9fa;
+  --panel-2: #e9ecef;
+  --text: #212529;
+  --muted: #6c757d;
+  --primary: #0d6efd;
+  --primary-700: #0b5ed7;
+  --accent: #198754;
+  --danger: #dc3545;
+  --border: #dee2e6;
+  --shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-shell {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Navigation */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2% 2%;
+  background: linear-gradient(180deg, rgba(248,249,250,0.9), rgba(248,249,250,0.7));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 220%;
+  letter-spacing: 0.3px;
+  color: var(--text);
+}
+
+.navlinks {
+  display: flex;
+  gap: 1.6%;
+}
+
+.navlink {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.8% 1%;
+  border-radius: 0.8%;
+}
+
+.navlink:hover, .navlink.active {
+  color: var(--text);
+  background: var(--panel-2);
+}
+
+/* Layout */
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2%;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 1.4%;
+  box-shadow: var(--shadow);
+}
+
+/* Reviews specific styles */
+.reviews-board {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 2%;
+}
+
+.reviews-main {
+  display: grid;
+  gap: 1.6%;
+}
+
+.reviews-composer {
+  padding: 1.6%;
+}
+
+.reviews-composer h3 {
+  margin: 0 0 1% 0;
+}
+
+/* ===== 투자 리뷰 테이블 ===== */
+.reviews-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: var(--panel);
+  font-size: 15px;
+}
+.reviews-table th, .reviews-table td {
+  border: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: center;
+  word-break: break-all;
+}
+.reviews-table th {
+  background: #f4f6fa;
+  color: #333;
+  font-weight: 600;
+}
+.reviews-table tr:hover {
+  background: #f7faff;
+}
+
+/* ===== 리뷰 폼 ===== */
+.reviews-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.reviews-field {
+  flex: 1 1 180px;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reviews-input, .reviews-textarea {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 15px;
+  background: var(--panel-2);
+  color: var(--text);
+}
+.reviews-textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.reviews-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+.reviews-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.reviews-btn:hover {
+  background: var(--primary-700);
+}
+.reviews-edit-btn {
+  background: #fffbe6;
+  color: #bfa100;
+  border: 1px solid #ffe58f;
+  border-radius: 5px;
+  padding: 4px 10px;
+  margin-right: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.reviews-edit-btn:hover {
+  background: #fff1b8;
+}
+.reviews-delete-btn {
+  background: #fff1f0;
+  color: #cf1322;
+  border: 1px solid #ffa39e;
+  border-radius: 5px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.reviews-delete-btn:hover {
+  background: #ffa39e;
+  color: #fff;
+}
+
+.reviews-list {
+  display: grid;
+  gap: 1.6%;
+}
+
+.reviews-post {
+  padding: 1.4% 1.6%;
+}
+
+.reviews-post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.6%;
+}
+
+.reviews-post-title {
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+}
+
+.reviews-post-mood {
+  padding: 0.2% 0.6%;
+  border-radius: 0.4%;
+  font-size: 0.8%;
+  font-weight: 500;
+  margin-left: 1%;
+}
+
+.reviews-post-mood.reflect {
+  background: rgba(13, 110, 253, 0.1);
+  color: var(--primary);
+}
+
+.reviews-post-mood.discipline {
+  background: rgba(25, 135, 84, 0.1);
+  color: var(--accent);
+}
+
+.reviews-post-mood.neutral {
+  background: rgba(108, 117, 125, 0.1);
+  color: var(--muted);
+}
+
+.reviews-post-mood.regret {
+  background: rgba(220, 53, 69, 0.1);
+  color: var(--danger);
+}
+
+.reviews-post-meta {
+  color: var(--muted);
+  font-size: 1.2%;
+  margin-bottom: 0.8%;
+}
+
+.reviews-post-body {
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 0.8%;
+}
+
+.reviews-post-actions {
+  display: flex;
+  gap: 0.8%;
+}
+
+.reviews-side {
+  display: grid;
+  gap: 1.6%;
+  height: fit-content;
+}
+
+.reviews-side-card {
+  padding: 1.4% 1.6%;
+}
+
+.reviews-side-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1%;
+}
+
+.reviews-side-list a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.reviews-side-list a:hover {
+  text-decoration: underline;
+}
+
+.reviews-char-count {
+  color: var(--muted);
+  font-size: 0.9%;
+  text-align: right;
+}
+
+.reviews-char-count.warning {
+  color: var(--danger);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 95%;
+    padding: 1%;
+  }
+  
+  .topnav {
+    padding: 1% 2%;
+    flex-direction: column;
+    gap: 1%;
+  }
+  
+  .navlinks {
+    gap: 2%;
+  }
+  
+  .brand {
+    font-size: 180%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 98%;
+    padding: 0.5%;
+  }
+  
+  .topnav {
+    padding: 0.5% 1%;
+  }
+  
+  .navlinks {
+    flex-wrap: wrap;
+    gap: 1%;
+  }
+  
+  .navlink {
+    padding: 0.5% 0.8%;
+    font-size: 0.9em;
+  }
+  
+  .brand {
+    font-size: 150%;
+  }
+  
+  .reviews-btn {
+    padding: 0.8% 1.2%;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 900px) {
+  .reviews-board {
+    grid-template-columns: 1fr;
+  }
+  .reviews-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .reviews-table th, .reviews-table td {
+    font-size: 12px;
+    padding: 6px 4px;
+  }
+  .reviews-btn, .reviews-edit-btn, .reviews-delete-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

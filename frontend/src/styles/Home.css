@@ -1,0 +1,122 @@
+.home-root {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 24px;
+  overflow-x: hidden; /* 오른쪽 가로 스크롤 제거 */
+}
+
+.home-top-cards {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 24px 32px;
+  min-width: 180px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stat-title {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3열 */
+  grid-template-rows: repeat(3, 1fr); /* 3행 */
+  gap: 28px;
+}
+
+.trade-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  padding: 24px 18px 36px 18px; /* padding 20% 증가 */
+  position: relative;
+  min-height: 144px; /* 20% 증가 (120 -> 144) */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trade-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.result-badge {
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 8px;
+  color: #fff;
+}
+.result-badge.win {
+  background: #2ecc40;
+}
+.result-badge.lose {
+  background: #e74c3c;
+}
+
+.trade-card-date {
+  margin-top: 12px;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.corner-square {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 43px; /* 20% 증가 */
+  height: 43px; /* 20% 증가 */
+  border-top-left-radius: 8px;
+  z-index: 2;
+}
+.corner-square.win {
+  background: #2ecc40;
+}
+.corner-square.lose {
+  background: #e74c3c;
+}
+
+.home-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+.home-pagination button {
+  background: #f5f5f5;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.home-pagination button:disabled {
+  background: #eee;
+  color: #bbb;
+  cursor: not-allowed;
+}

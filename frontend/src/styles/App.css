@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* main 태그의 클래스 */
+/* main 태그에 적용된 클래스 */
+.container {
+  display: flex; /* 자식 요소(.content, Sidebar)를 가로로 배치합니다. */
+  /* topnav의 높이를 뺀 나머지 화면 전체를 차지하도록 설정합니다. */
+  /* topnav 높이가 60px가 아니라면 그 값으로 수정해주세요. */
+  height: calc(100vh - 60px);
+}
+
+/* Routes를 감싸는 div에 적용된 클래스 */
+.content {
+  flex-grow: 1; /* 사이드바를 제외한 나머지 공간을 모두 차지합니다. */
+  overflow-y: auto; /* 내용이 길어지면 스크롤바가 생깁니다. */
+  /* left padding is sidebar width + gap to avoid overlap with fixed sidebar.
+     fallback to 10vw + 1% if CSS variable is not available. */
+  padding: 20px 20px 20px calc(var(--sidebar-width, 10vw) + var(--sidebar-gap, 1%));
+}
+
+/* Hide scrollbar visually but keep scrolling functional for the main content area */
+.content {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  color: #222;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 32px 24px;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Responsive: when sidebar changes in Sidebar.css media queries, adjust content padding too */
+@media (max-width: 900px) {
+  .content {
+    padding-left: calc(var(--sidebar-width, 14vw) + var(--sidebar-gap, 1%));
+  }
+}
+
+@media (max-width: 600px) {
+  /* sidebar becomes top bar; remove left padding */
+  .content {
+    padding-left: 20px;
+  }
+}

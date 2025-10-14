@@ -1,0 +1,111 @@
+.sidebar {
+  /* use CSS vars so other files (App.css) can align content accordingly */
+  --sidebar-width: 10vw; /* default sidebar width */
+  --sidebar-gap: 1%; /* gap between sidebar and content */
+
+  width: var(--sidebar-width); /* 사이드바 너비 */
+  min-width: 80px;
+  max-width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: width 0.2s;
+  position: fixed;
+  top: 10%;
+  left: 1%; /* 화면 왼쪽에서 1% 띄우기 */
+  margin: 0;
+  padding: 0;
+  z-index: 101;
+}
+
+.sidebar-header {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-header h1 {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+}
+
+.category-list {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.category-list li a {
+    display: block;
+    padding: 14px 20px;
+    margin: 4px 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.category-list li a:hover {
+    background-color: #f0f2f5;
+}
+
+/* 현재 활성화된 페이지 링크에 적용될 스타일 */
+.category-list li a.active {
+    background-color: #4a90e2;
+    color: white;
+    font-weight: 600;
+}
+
+/* 반응형: 900px 이하에서 사이드바 축소 */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 14vw;
+    min-width: 80px;
+    max-width: 160px;
+  }
+  .sidebar-header h1 {
+    font-size: 16px;
+  }
+  .category-list li a {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* 모바일: 600px 이하에서 사이드바를 상단 바처럼 */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100vw;
+    min-width: 0;
+    height: auto;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .sidebar-header {
+    display: none;
+  }
+  .category-list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0;
+  }
+  .category-list li {
+    flex: 1 1 0;
+    text-align: center;
+  }
+  .category-list li a {
+    margin: 0;
+    border-radius: 0;
+    font-size: 13px;
+    padding: 10px 0;
+  }
+}
