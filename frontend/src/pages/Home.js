@@ -46,21 +46,27 @@ function Home() {
 
   return (
     <div className="home-root">
-      {/* 상단 통계 카드 */}
-      <div className="home-top-cards">
-        <div className="stat-card">
-          <div className="stat-title">현재 자산</div>
-          <div className="stat-value">{dummyStats.asset.toLocaleString()}원</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-title">총 수익</div>
-          <div className="stat-value">{dummyStats.profit.toLocaleString()}원</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-title">전적</div>
-          <div className="stat-value">
-            {dummyStats.record.win + dummyStats.record.lose}전 {dummyStats.record.win}승 {dummyStats.record.lose}패
+      {/* 상단 통계 카드 (왼쪽) + 글작성 버튼 (오른쪽) */}
+      <div className="home-top-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+        <div className="home-top-cards">
+          <div className="stat-card">
+            <div className="stat-title">현재 자산</div>
+            <div className="stat-value">{dummyStats.asset.toLocaleString()}원</div>
           </div>
+          <div className="stat-card">
+            <div className="stat-title">총 수익</div>
+            <div className="stat-value">{dummyStats.profit.toLocaleString()}원</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-title">전적</div>
+            <div className="stat-value">
+              {dummyStats.record.win + dummyStats.record.lose}전 {dummyStats.record.win}승 {dummyStats.record.lose}패
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <button className="write-btn" onClick={() => navigate('/card/write')} style={{ cursor: 'pointer' }}>글 작성</button>
         </div>
       </div>
 

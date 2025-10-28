@@ -7,6 +7,7 @@ import Performance from "./pages/Performance";
 import Sidebar from "./pages/Sidebar";
 import Item from "./pages/Item";
 import CardDetail from "./pages/CardDetail";
+import CardWrite from "./pages/CardWrite";
 import "./styles/App.css"
 
 // 커스텀 훅: 모달 열릴 때 body 스크롤 막기
@@ -44,6 +45,7 @@ function App() {
                             <Route path="/reviews" element={<Reviews />} />
                             <Route path="/performance" element={<Performance />} />
                             <Route path={"/item"} element={<Item />} />
+                            <Route path="/card/write" element={<CardWrite />} />
                             <Route path="/card/:id" element={<CardDetail />} />
                         </Routes>
                     </div>
