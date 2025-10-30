@@ -7,6 +7,7 @@ function CardWrite() {
   const [investAmount, setInvestAmount] = useState('');
   const [entryPrice, setEntryPrice] = useState('');
   const [profit, setProfit] = useState('');
+  const [result, setResult] = useState('WIN');
   const [review, setReview] = useState('');
   const [images, setImages] = useState([]);
   const [previews, setPreviews] = useState([]);
@@ -33,7 +34,8 @@ function CardWrite() {
       formData.append('investAmount', investAmount);
       formData.append('entryPrice', entryPrice);
       formData.append('profitAmount', profit);
-      formData.append('review', review);
+  formData.append('review', review);
+  formData.append('result', result);
       images.forEach((file, idx) => formData.append('images', file));
 
       // Attempt to POST to backend. If backend doesn't accept multipart, you can switch to JSON.
@@ -61,7 +63,20 @@ function CardWrite() {
       <div className="card-write-wrap">
         <button className="back-btn" onClick={() => navigate(-1)}>← 뒤로</button>
         <h2 className="write-title">글 작성</h2>
-
+          <div className="result-options">
+            <div className="result-option">
+              <label className={result === 'WIN' ? 'active' : ''}>
+                <input type="radio" name="result" value="WIN" checked={result === 'WIN'} onChange={() => setResult('WIN')} />
+                <span className="pill win">승</span>
+              </label>
+            </div>
+            <div className="result-option">
+              <label className={result === 'LOSE' ? 'active' : ''}>
+                <input type="radio" name="result" value="LOSE" checked={result === 'LOSE'} onChange={() => setResult('LOSE')} />
+                <span className="pill lose">패</span>
+              </label>
+            </div>
+          </div>
         <form className="card-write-form" onSubmit={handleSubmit}>
           <label>
             투자금

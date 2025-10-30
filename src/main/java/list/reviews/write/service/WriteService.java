@@ -17,7 +17,7 @@ public class WriteService {
 
     private final WriteRepository writeRepository;
 
-    public Write saveWrite(Double investAmount, Double entryPrice, Double profitAmount,
+    public Write saveWrite(String result, Double investAmount, Double entryPrice, Double profitAmount,
                            String review, MultipartFile image) throws IOException {
         byte[] imageData =null;
         String imageName = null;
@@ -29,12 +29,11 @@ public class WriteService {
             imageType = image.getContentType();
         }
 
-        //trade_date, trade_no, result, Loss_amount 등은 예시 값으로 처리
+        //trade_date, result, Loss_amount 등은 예시 값으로 처리
         //프론트에서 확장 시 해당 값도 함께 받음
         Write write = Write.builder()
                 .tradeDate(LocalDate.now())
-                .tradeNo(null)
-                .result(null)
+                .result(result)
                 .investAmount(investAmount)
                 .entryPrice(entryPrice)
                 .takeProfitPrice(null)

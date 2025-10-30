@@ -19,9 +19,6 @@ public class Card {
     @Column(name = "trade_date", nullable = false)
     private String tradeDate;
 
-    @Column(name = "trade_no", nullable = false)
-    private int tradeNo;
-
     @Column(nullable = false)
     private String result; // WIN or LOSE
 

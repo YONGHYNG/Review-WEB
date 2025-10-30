@@ -38,3 +38,14 @@
 .form-actions .secondary{ background:#f3f4f6; color:#111827; border:none; padding:10px 16px; border-radius:8px; cursor:pointer }
 
 @media (max-width:720px){ .image-previews img{ width:70px; height:56px } }
+
+/* result radio pills */
+.result-options{ display:flex; gap:10px; margin:6px 0 12px 0 }
+.result-option label{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none }
+.result-option input{ display:none }
+.pill{ padding:8px 12px; border-radius:999px; font-weight:800; color:#fff; display:inline-block; transform-origin:center; transition: transform .14s cubic-bezier(.2,.9,.2,1), box-shadow .14s cubic-bezier(.2,.9,.2,1); }
+.pill.win{ background:#16a34a }
+.pill.lose{ background:#dc2626 }
+.result-option label.active{ outline: 2px solid rgba(0,0,0,0.06); transform: translateY(-2px) }
+.result-option label.active .pill{ transform: scale(1.2); box-shadow: 0 14px 34px rgba(2,6,23,0.14); }
+

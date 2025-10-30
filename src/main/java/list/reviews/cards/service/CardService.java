@@ -2,6 +2,7 @@ package list.reviews.cards.service;
 
 import list.reviews.cards.entity.Card;
 import list.reviews.cards.repository.CardRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class CardService {
 
     // 전체 데이터 조회
     public List<Card> getAllCards() {
-        return cardRepository.findAll();
+        return cardRepository.findAll(Sort.by(Sort.Direction.DESC, "tradeDate"));
     }
 }
 

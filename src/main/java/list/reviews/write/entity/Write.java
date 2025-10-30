@@ -21,9 +21,6 @@ public class Write {
     @Column(name = "trade_date")
     private LocalDate tradeDate;
 
-    @Column(name = "trade_no")
-    private Integer tradeNo;
-
     @Column(name = "result", length = 10)
     private String result;
 
